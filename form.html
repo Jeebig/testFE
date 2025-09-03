@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Form</h1>
+</header>
+<nav>
+    <a href="index.html">Main</a>
+    <a href="map.html">Map</a>
+    <a href="image.html">Responsive Image</a>
+    <a href="multimedia.html">Multimedia</a>
+    <a href="form.html">Form</a>
+    <a href="grid.html">Grid</a>
+    <a href="semantics.html">Semantics</a>
+    <a href="js.html">JavaScript</a>
+</nav>
+<main>
+    <section>
+        <h2>Modern Form</h2>
+        <form autocomplete="on">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Your email">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+            <label for="color">Favorite Color:</label>
+            <input type="color" id="color" name="color" value="#ff0000">
+            <label for="bio">About You:</label>
+            <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself"></textarea>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="">Select country</option>
+                <option value="us">USA</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+            </select>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 HTML5 Example Website</p>
+</footer>
+</body>
+</html>
