@@ -18,20 +18,54 @@
     <a href="grid.html">Grid</a>
     <a href="semantics.html">Semantics</a>
     <a href="js.html">JavaScript</a>
+    <button class="button" id="toggle-theme">
+        <img id="theme-icon" src="moon.svg" alt="Theme Icon"
+             style="height:1.2em;vertical-align:middle;margin-right:0.5em;">
+        <span id="theme-text">Dark theme</span>
+    </button>
 </nav>
+
+<script>
+    function setThemeButton(dark) {
+        const icon = document.getElementById('theme-icon');
+        const text = document.getElementById('theme-text');
+        if (dark) {
+            icon.src = "sun.svg";
+            icon.alt = "Sun Icon";
+            text.textContent = "Light theme";
+        } else {
+            icon.src = "moon.svg";
+            icon.alt = "Moon Icon";
+            text.textContent = "Dark theme";
+        }
+    }
+
+    document.getElementById('toggle-theme').onclick = function () {
+        const isDark = !document.body.classList.contains('dark-theme');
+        document.body.classList.toggle('dark-theme');
+        setThemeButton(isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+
+    window.onload = function () {
+        const isDark = localStorage.getItem('theme') === 'dark';
+        if (isDark) document.body.classList.add('dark-theme');
+        setThemeButton(isDark);
+    };
+</script>
 <main>
     <section>
         <h2>Interactive Map</h2>
         <div class="map-container">
             <iframe
-                class="map-responsive"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.3063864851115!2d-74.04450039999999!3d40.6892494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25090129c363d%3A0x40c6a5770d25022b!2sStatue%20of%20Liberty!5e0!3m2!1sen!2sus!4v1756918446168!5m2!1sen!2sus"
-                width="600"
-                height="450"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    class="map-responsive"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.3063864851115!2d-74.04450039999999!3d40.6892494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25090129c363d%3A0x40c6a5770d25022b!2sStatue%20of%20Liberty!5e0!3m2!1sen!2sus!4v1756918446168!5m2!1sen!2sus"
+                    width="600"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 </main>

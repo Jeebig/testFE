@@ -1,104 +1,179 @@
 :root {
-  --trans-dur: 0.3s;
-  --bg: #23272f;
-  --primary1: #ffb700;
-  --primary2: #007bff;
-  --fg-t: #fff8;
+    --trans-dur: 0.3s;
+    --bg: #f7f7f7;
+    --primary1: #ffb700;
+    --primary2: #007bff;
+    --fg-t: #222; /* основной цвет текста на светлой теме */
+    --header-footer-bg: #333;
+    --header-footer-text: #fff;
+    --nav-bg: #444;
+    --nav-link: #fff;
+    --nav-link-hover: #ffb700;
+    --main-bg: #fff;
+    --btn-bg: #D8D9DB;
+    --btn-bg-hover: #FDFDFD;
+    --btn-text: #606060;
+    --btn-shadow: #fff;
+    --grid-btn-bg: #D8D9DB;
+    --grid-btn-bg-hover: #FDFDFD;
+    --grid-btn-text: #222;
+    --grid-btn-border: #8F9092
 }
+
+body.dark-theme {
+    --bg: #23272f;
+    --fg-t: #fff; /* основной цвет текста на тёмной теме */
+    --header-footer-bg: #111;
+    --header-footer-text: #ffb700;
+    --nav-bg: #222;
+    --nav-link: #ffb700;
+    --nav-link-hover: #fff;
+    --main-bg: #181c20;
+    --btn-bg: #222;
+    --btn-bg-hover: #333;
+    --btn-text: #ffb700;
+    --btn-shadow: #222;
+    --grid-btn-bg: #222;
+    --grid-btn-bg-hover: #333;
+    --grid-btn-text: #ffb700;
+    --grid-btn-border: #ffb700;
+}
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
-    background: #f7f7f7;
-    color: #222;
-    padding-top: 3.5rem; /* чтобы контент не был под меню */
+    background: var(--bg);
+    color: var(--fg-t);
+    padding-top: 3.5rem;
 }
+
 header, footer {
-    background: #333;
-    color: #fff;
+    background: var(--header-footer-bg);
+    color: var(--header-footer-text);
     padding: 1rem 0;
     text-align: center;
 }
+
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: #444;
+    background: var(--nav-bg);
     display: flex;
     justify-content: center;
     gap: 2rem;
     padding: 0.5rem 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
+
 nav a {
-    color: #fff;
+    color: var(--nav-link);
     text-decoration: none;
     font-weight: bold;
     transition: color .2s;
 }
+
 nav a:hover {
-    color: #ffb700;
+    color: var(--nav-link-hover);
 }
+
 main {
     max-width: 800px;
     margin: 2rem auto;
-    background: #fff;
+    background: var(--main-bg);
     border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
+
 section {
     margin-bottom: 2rem;
 }
+
 h2 {
-    color: #444;
+    color: var(--fg-t);
 }
 
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  cursor: pointer;
-  width: 150px;
-  height: 50px;
-  background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
-  border-radius: 30px;
-  border: 1px solid #8F9092;
-  transition: all 0.2s ease;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #606060;
-  text-shadow: 0 1px #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    background-image: linear-gradient(to top, var(--btn-bg) 0%, var(--btn-bg-hover) 80%, var(--btn-bg-hover) 100%);
+    border-radius: 30px;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--btn-text);
+    text-shadow: 0 1px var(--btn-shadow);
 }
 
 .button:hover {
-  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
 }
 
 .button:active {
-  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
 .button:focus {
-  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+/* --- ГРИД КНОПКИ И ССЫЛКИ --- */
+.grid a,
+.grid .btn,
+.grid button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 30px;
+    border: 1px solid var(--grid-btn-border);
+    font-weight: 600;
+    font-size: 15px;
+    min-height: 50px;
+    margin: 0.5em 0;
+    background: var(--grid-btn-bg);
+    color: var(--grid-btn-text) !important;
+    box-shadow: 0 1px 2px var(--btn-shadow);
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    padding: 0 1.5em;
+}
+
+.grid a:hover,
+.grid .btn:hover,
+.grid button:hover {
+    background: var(--grid-btn-bg-hover);
+}
+
+.grid {
+    color: var(--grid-btn-text);
+}
+
+.grid .my-text {
+    color: var(--grid-btn-text);
 }
 
 
-
-
-.map-container{
+.map-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin: 1em 0;}
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 1em 0;
+}
 
-.map-responsive{
+.map-responsive {
     position: absolute;
     top: 0;
     left: 0;
@@ -109,31 +184,36 @@ h2 {
 
 @media (max-width: 600px) {
     .map-container {
-        padding-bottom: 75%; /* 4:3 aspect ratio for smaller screens */
+        padding-bottom: 75%;
     }
 }
+
 .responsive-img {
     max-width: 80%;
     height: auto;
     border-radius: 4px;
     margin: 1em 0;
 }
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
 }
+
 @media (max-width: 600px) {
     .grid {
         grid-template-columns: 1fr;
     }
 }
+
 form {
     display: flex;
     flex-direction: column;
     gap: 1em;
     max-width: 400px;
 }
+
 input, textarea, select {
     padding: 0.5em;
     font-size: 1em;
