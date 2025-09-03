@@ -5,34 +5,6 @@
     <title>HTML5 Features Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-    function setThemeButton(dark) {
-        const icon = document.getElementById('theme-icon');
-        const text = document.getElementById('theme-text');
-        if (dark) {
-            icon.src = "sun.svg";
-            icon.alt = "Sun Icon";
-            text.textContent = "Light theme";
-        } else {
-            icon.src = "moon.svg";
-            icon.alt = "Moon Icon";
-            text.textContent = "Dark theme";
-        }
-    }
-
-    document.getElementById('toggle-theme').onclick = function () {
-        const isDark = !document.body.classList.contains('dark-theme');
-        document.body.classList.toggle('dark-theme');
-        setThemeButton(isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    };
-
-    window.onload = function () {
-        const isDark = localStorage.getItem('theme') === 'dark';
-        if (isDark) document.body.classList.add('dark-theme');
-        setThemeButton(isDark);
-    };
-</script>
 <body>
 <header>
     <h1>Welcome to the HTML5 Features Demo Site</h1>
@@ -87,21 +59,34 @@
     <p>&copy; 2025 HTML5 Example Website</p>
 </footer>
 <script>
-    document.getElementById('toggle-theme').onclick = function () {
-        document.body.classList.toggle('dark-theme');
-        // Save user choice
-        if (document.body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
-    };
-    // Auto-apply on load
-    window.onload = function () {
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-theme');
-        }
+function setThemeButton(dark) {
+    const icon = document.getElementById('theme-icon');
+    const text = document.getElementById('theme-text');
+    if (!icon || !text) return;
+    if (dark) {
+        icon.src = "sun.svg";
+        icon.alt = "Sun Icon";
+        text.textContent = "Light theme";
+    } else {
+        icon.src = "moon.svg";
+        icon.alt = "Moon Icon";
+        text.textContent = "Dark theme";
     }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggle-theme');
+    if (toggleBtn) {
+        toggleBtn.onclick = function () {
+            const isDark = !document.body.classList.contains('dark-theme');
+            document.body.classList.toggle('dark-theme');
+            setThemeButton(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+    }
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) document.body.classList.add('dark-theme');
+    setThemeButton(isDark);
+});
 </script>
 </body>
 </html>

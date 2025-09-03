@@ -24,43 +24,44 @@
         <span id="theme-text">Dark theme</span>
     </button>
 </nav>
-
 <script>
-    function setThemeButton(dark) {
-        const icon = document.getElementById('theme-icon');
-        const text = document.getElementById('theme-text');
-        if (dark) {
-            icon.src = "sun.svg";
-            icon.alt = "Sun Icon";
-            text.textContent = "Light theme";
-        } else {
-            icon.src = "moon.svg";
-            icon.alt = "Moon Icon";
-            text.textContent = "Dark theme";
-        }
+function setThemeButton(dark) {
+    const icon = document.getElementById('theme-icon');
+    const text = document.getElementById('theme-text');
+    if (!icon || !text) return;
+    if (dark) {
+        icon.src = "sun.svg";
+        icon.alt = "Sun Icon";
+        text.textContent = "Light theme";
+    } else {
+        icon.src = "moon.svg";
+        icon.alt = "Moon Icon";
+        text.textContent = "Dark theme";
     }
-
-    document.getElementById('toggle-theme').onclick = function () {
-        const isDark = !document.body.classList.contains('dark-theme');
-        document.body.classList.toggle('dark-theme');
-        setThemeButton(isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    };
-
-    window.onload = function () {
-        const isDark = localStorage.getItem('theme') === 'dark';
-        if (isDark) document.body.classList.add('dark-theme');
-        setThemeButton(isDark);
-    };
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggle-theme');
+    if (toggleBtn) {
+        toggleBtn.onclick = function () {
+            const isDark = !document.body.classList.contains('dark-theme');
+            document.body.classList.toggle('dark-theme');
+            setThemeButton(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+    }
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) document.body.classList.add('dark-theme');
+    setThemeButton(isDark);
+});
 </script>
 <main>
     <section>
         <h2>CSS Grid Layout</h2>
         <div class="grid">
-            <div style="background:#e3f2fd; padding:1em; border-radius:4px;">Item 1</div>
-            <div style="background:#ffe0b2; padding:1em; border-radius:4px;">Item 2</div>
-            <div style="background:#c8e6c9; padding:1em; border-radius:4px;">Item 3</div>
-            <div style="background:#ffebee; padding:1em; border-radius:4px;">Item 4</div>
+            <div style="background:var(--grid-btn-bg); color:var(--grid-btn-text); padding:1em; border-radius:4px;">Item 1</div>
+            <div style="background:var(--grid-btn-bg); color:var(--grid-btn-text); padding:1em; border-radius:4px;">Item 2</div>
+            <div style="background:var(--grid-btn-bg); color:var(--grid-btn-text); padding:1em; border-radius:4px;">Item 3</div>
+            <div style="background:var(--grid-btn-bg); color:var(--grid-btn-text); padding:1em; border-radius:4px;">Item 4</div>
         </div>
     </section>
 </main>

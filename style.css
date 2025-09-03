@@ -162,6 +162,13 @@ h2 {
     color: var(--grid-btn-text);
 }
 
+/* Добавлено: автоматическое применение переменных для обычных div внутри .grid */
+.grid > div {
+    background: var(--grid-btn-bg) !important;
+    color: var(--grid-btn-text) !important;
+    border-radius: 4px;
+    padding: 1em;
+}
 
 .map-container {
     position: relative;
@@ -217,4 +224,5 @@ form {
 input, textarea, select {
     padding: 0.5em;
     font-size: 1em;
+
 }
